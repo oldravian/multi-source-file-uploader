@@ -1,10 +1,11 @@
 {
   "name": "oldravian/multi-source-file-uploader",
-  "description": "A Laravel package for handling file upload from multiple sources like HTML form, file url or base64 encoded file",
+  "description": "A Laravel package for handling file upload from multiple sources like file object, url or base64 encoded data",
   "keywords": [
     "laravel",
     "file-upload",
     "multi-source-file-upload",
+    "upload-file-from-file-object",
     "upload-file-from-url",
     "upload-file-from-base64"
   ],
@@ -13,17 +14,18 @@
   "authors": [
     {
       "name": "Habib urRehman",
-      "email": "chaudryhabib2@gmail.com"
+      "email": "chaudryhabib2@gmail.com",
+      "homepage": "http://redravian.com"
     }
   ],
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": "^8.0"
+    "php": "^7.2|^8.0"
   },
   "autoload": {
     "psr-4": {
-      "OldRavian\\FileUploader\\": "src/"
+      "OldRavian\\FileUploader\\": "./vendor/multi-source-file-uploader/src/"
     }
   },
   "extra": {

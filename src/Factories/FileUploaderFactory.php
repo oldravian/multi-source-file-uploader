@@ -17,7 +17,7 @@ class FileUploaderFactory {
 
     public function build($type){
         switch($type){
-            case "form":
+            case "object":
                 return new ByForm;
             break;
             case "url":
