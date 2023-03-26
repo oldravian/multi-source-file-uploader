@@ -25,7 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "OldRavian\\FileUploader\\": "./vendor/multi-source-file-uploader/src/"
+      "OldRavian\\FileUploader\\": "src/"
     }
   },
   "extra": {
