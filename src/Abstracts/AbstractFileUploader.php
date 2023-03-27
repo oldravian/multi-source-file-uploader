@@ -76,7 +76,7 @@ abstract class AbstractFileUploader implements FileUploaderContract
      *
      * @return bool
      */
-    protected function uploadValidate(UploadedFile|string $uploadedFile, $settings){
+    protected function uploadValidate($uploadedFile, $settings){
         if (!$this->isValid($uploadedFile)) {
             return false;
         }
@@ -94,7 +94,7 @@ abstract class AbstractFileUploader implements FileUploaderContract
         return true;
     }
 
-    protected function isValid(UploadedFile|string $uploadedFile){
+    protected function isValid($uploadedFile){
         return true;
     }
     
@@ -105,7 +105,7 @@ abstract class AbstractFileUploader implements FileUploaderContract
      *
      * @return string
      */
-    abstract protected function getExtension(UploadedFile|string $uploadedFile);
+    abstract protected function getExtension($uploadedFile);
 
     /**
      * Return the file size
@@ -114,7 +114,7 @@ abstract class AbstractFileUploader implements FileUploaderContract
      *
      * @return double
      */
-    abstract protected function getFileSize(UploadedFile|string $uploadedFile);
+    abstract protected function getFileSize($uploadedFile);
 
     /**
      * Generate an unique name for storing file
@@ -123,7 +123,7 @@ abstract class AbstractFileUploader implements FileUploaderContract
      *
      * @return string
      */
-    protected function getUniqueName(UploadedFile|string $uploadedFile){
+    protected function getUniqueName($uploadedFile){
         $originName = $this->getOriginName($uploadedFile);
         $uniqueString = uniqid(rand(), true)."_".$originName."_".getmypid()."_".gethostname()."_".time();
         return md5($uniqueString).".".$this->getExtension($uploadedFile);
@@ -136,7 +136,7 @@ abstract class AbstractFileUploader implements FileUploaderContract
      *
      * @return string
      */
-    protected function getOriginName(UploadedFile|string $uploadedFile){
+    protected function getOriginName($uploadedFile){
         return "".$this->getExtension($uploadedFile);
     }
     
@@ -149,5 +149,5 @@ abstract class AbstractFileUploader implements FileUploaderContract
      *
      * @return array
      */
-    abstract protected function storeFile(UploadedFile|string $uploadedFile, $settings);
+    abstract protected function storeFile($uploadedFile, $settings);
 }

@@ -13,7 +13,7 @@ class ByBase64 extends AbstractFileUploader
 {
     private $base64Arr;
 
-    protected function isValid(UploadedFile|string $uploadedFile){
+    protected function isValid($uploadedFile){
         // split the string on commas
         //$data[ 0 ] == "data:image/png;base64"
         //$data[ 1 ] == <actual base64 string>
@@ -32,7 +32,7 @@ class ByBase64 extends AbstractFileUploader
      *
      * @return string
      */
-    protected function getExtension(UploadedFile|string $uploadedFile){
+    protected function getExtension($uploadedFile){
         $ext = substr($this->base64Arr[0], strpos($this->base64Arr[0], '/')+1);
         $ext = substr($ext, 0, strpos($ext, ';'));
         return $ext;
@@ -45,7 +45,7 @@ class ByBase64 extends AbstractFileUploader
      *
      * @return double
      */
-    protected function getFileSize(UploadedFile|string $uploadedFile)
+    protected function getFileSize($uploadedFile)
     {
         //https://stackoverflow.com/a/5373559/10029265
         return strlen(base64_decode($uploadedFile));
@@ -59,7 +59,7 @@ class ByBase64 extends AbstractFileUploader
      *
      * @return array
      */
-    protected function storeFile(UploadedFile|string $uploadedFile, $settings)
+    protected function storeFile($uploadedFile, $settings)
     {
         $name = $this->getUniqueName($uploadedFile);
         $storeLocation = $settings['directory'].DIRECTORY_SEPARATOR.$name;

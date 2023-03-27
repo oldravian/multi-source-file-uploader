@@ -14,7 +14,7 @@ class ByUrl extends AbstractFileUploader
     private $fileSize;
     private $fileName;
 
-    protected function isValid(UploadedFile|string $uploadedFile){
+    protected function isValid($uploadedFile){
         //https://stackoverflow.com/a/52368686/10029265
         $ch = curl_init($uploadedFile);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -58,7 +58,7 @@ class ByUrl extends AbstractFileUploader
      *
      * @return string
      */
-    protected function getExtension(UploadedFile|string $uploadedFile){
+    protected function getExtension($uploadedFile){
         $name = substr($uploadedFile, strrpos($uploadedFile, '/') + 1);
         $this->fileName = pathinfo($name, PATHINFO_FILENAME);
         $ext = pathinfo($name, PATHINFO_EXTENSION);
@@ -72,7 +72,7 @@ class ByUrl extends AbstractFileUploader
      *
      * @return double
      */
-    protected function getFileSize(UploadedFile|string $uploadedFile)
+    protected function getFileSize($uploadedFile)
     {
         return $this->fileSize;
     }
@@ -84,7 +84,7 @@ class ByUrl extends AbstractFileUploader
      *
      * @return string
      */
-    protected function getOriginName(UploadedFile|string $uploadedFile)
+    protected function getOriginName($uploadedFile)
     {
         return $this->fileName;
     }
@@ -97,7 +97,7 @@ class ByUrl extends AbstractFileUploader
      *
      * @return array
      */
-    protected function storeFile(UploadedFile|string $uploadedFile, $settings)
+    protected function storeFile($uploadedFile, $settings)
     {
         $name = $this->getUniqueName($uploadedFile);
         $storeLocation = $settings['directory'].DIRECTORY_SEPARATOR.$name;

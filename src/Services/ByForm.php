@@ -10,7 +10,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 class ByForm extends AbstractFileUploader
 {
-    protected function isValid(UploadedFile|string $uploadedFile){
+    protected function isValid($uploadedFile){
         if (!$uploadedFile->isValid($uploadedFile)) {
             $this->uploadError = $uploadedFile->getErrorMessage();
             return false;
@@ -25,7 +25,7 @@ class ByForm extends AbstractFileUploader
      *
      * @return string
      */
-    protected function getExtension(UploadedFile|string $uploadedFile){
+    protected function getExtension($uploadedFile){
         return $uploadedFile->getClientOriginalExtension();
     }
 
@@ -36,7 +36,7 @@ class ByForm extends AbstractFileUploader
      *
      * @return double
      */
-    protected function getFileSize(UploadedFile|string $uploadedFile)
+    protected function getFileSize($uploadedFile)
     {
         return $uploadedFile->getSize();
     }
@@ -48,7 +48,7 @@ class ByForm extends AbstractFileUploader
      *
      * @return string
      */
-    protected function getOriginName(UploadedFile|string $uploadedFile)
+    protected function getOriginName($uploadedFile)
     {
         return $uploadedFile->getClientOriginalName();
     }
@@ -61,7 +61,7 @@ class ByForm extends AbstractFileUploader
      *
      * @return array
      */
-    protected function storeFile(UploadedFile|string $uploadedFile, $settings)
+    protected function storeFile($uploadedFile, $settings)
     {
         $name = $this->getUniqueName($uploadedFile);
         $storeLocation = $settings['directory'].DIRECTORY_SEPARATOR.$name;
